@@ -6,9 +6,9 @@ end
 
 local function GetURL(scripturl)
 	if shared.VapeDeveloper then
-		return readfile("vape/"..scripturl)
+		return readfile("oldvape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/ImNicknamez/oldvape/main/"..scripturl, true)
 	end
 end
 
@@ -285,18 +285,18 @@ local teamsbycolortoggle = Settings.CreateToggle("Teams by color", function() en
 local middleclickfriendstoggle = Settings.CreateToggle("MiddleClick friends", function() end, function() end)
 local blatanttoggle = Settings.CreateToggle("Blatant mode", function() end, function() end)
 
-if isfolder("vape") == false then
-	makefolder("vape")
+if isfolder("oldvape") == false then
+	makefolder("oldvape")
 end
-if isfolder("vape/CustomModules") == false then
-	makefolder("vape/CustomModules")
+if isfolder("oldvape/CustomModules") == false then
+	makefolder("oldvape/CustomModules")
 end
-if isfolder("vape/Profiles") == false then
-	makefolder("vape/Profiles")
+if isfolder("oldvape/Profiles") == false then
+	makefolder("oldvape/Profiles")
 end
 
-if pcall(function() readfile("vape/CustomModules/"..game.PlaceId..".vape") end) then
-	loadstring(readfile("vape/CustomModules/"..game.PlaceId..".vape"))()
+if pcall(function() readfile("oldvape/CustomModules/"..game.PlaceId..".vape") end) then
+	loadstring(readfile("oldvape/CustomModules/"..game.PlaceId..".vape"))()
 else
 	loadstring(GetURL("AnyGame.vape"))()
 end
