@@ -360,13 +360,13 @@ vapeoptionsbutton.MouseButton1Click:connect(function()
 end)
 
 api["SaveFriends"] = function()
-	writefile("vape/Profiles/friends.vapefriends", game:GetService("HttpService"):JSONEncode(api["FriendsObject"]))
+	writefile("oldvape/Profiles/friends.oldvapefriends", game:GetService("HttpService"):JSONEncode(api["FriendsObject"]))
 end
 
 api["LoadFriends"] = function()
 
 		local success, result = pcall(function()
-			return game:GetService("HttpService"):JSONDecode(readfile("vape/Profiles/friends.vapefriends"))
+			return game:GetService("HttpService"):JSONDecode(readfile("oldvape/Profiles/friends.oldvapefriends"))
 		end)
 		if success and type(result) == "table" then
 			api["FriendsObject"] = result
@@ -400,12 +400,12 @@ api["SaveSettings"] = function()
 			api["Settings"][i] = {["Type"] = "ColorSlider", ["Value"] = v["Api"]["Value"], ["RainbowValue"] = v["Api"]["RainbowValue"]}
 		end
 	end
-	writefile("vape/Profiles/"..game.PlaceId..".vapeprofile", game:GetService("HttpService"):JSONEncode(api["Settings"]))
+	writefile("oldvape/Profiles/"..game.PlaceId..".oldvapeprofile", game:GetService("HttpService"):JSONEncode(api["Settings"]))
 end
 
 api["LoadSettings"] = function()
 	local success, result = pcall(function()
-		return game:GetService("HttpService"):JSONDecode(readfile("vape/Profiles/"..game.PlaceId..".vapeprofile"))
+		return game:GetService("HttpService"):JSONDecode(readfile("oldvape/Profiles/"..game.PlaceId..".oldvapeprofile"))
 	end)
 	if success and type(result) == "table" then
 		for i,v in pairs(result) do
